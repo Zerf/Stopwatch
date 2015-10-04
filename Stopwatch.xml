@@ -1,0 +1,194 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+	<Script file="Stopwatch.lua"/>
+	<!-- Stopwatch -->
+	<Frame name="StopwatchFrame" toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true" clampedToScreen="true" frameStrata="DIALOG">
+		<Size x="130" y="48"/>
+		<HitRectInsets>
+			<AbsInset left="3" right="-12" top="-10" bottom="8"/>
+		</HitRectInsets>
+		<Anchors>
+			<Anchor point="TOPRIGHT">
+				<Offset x="-250" y="-300"/>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBackgroundLeft" file="Interface\AddOns\Stopwatch\textures\TimerBackground">
+					<Size x="128" y="29"/>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="1.0" top="0" bottom="0.453125"/>
+				</Texture>
+				<Texture file="Interface\AddOns\Stopwatch\textures\TimerBackground">
+					<Size x="10" y="35"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentBackgroundLeft" relativePoint="TOPRIGHT">
+							<Offset x="0" y="1"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0.453125" bottom="1"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="StopwatchTicker">
+				<Size x="100" y="20"/>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset x="-41" y="-1"/>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="StopwatchTickerSecond" inherits="GameFontHighlightLarge" justifyH="CENTER">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset x="0" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString text=":" inherits="GameFontHighlightLarge">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset x="-22" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="StopwatchTickerMinute" inherits="GameFontHighlightLarge" justifyH="CENTER">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset x="-27" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString text=":" inherits="GameFontHighlightLarge">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset x="-49" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="StopwatchTickerHour" inherits="GameFontHighlightLarge" justifyH="CENTER">
+							<Anchors>
+								<Anchor point="TOPRIGHT">
+									<Offset x="-54" y="0"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Frame name="StopwatchTabFrame">
+				<Size>
+					<AbsDimension x="130" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP">
+						<Offset x="1" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentLeft" file="Interface\ChatFrame\ChatFrameTab">
+							<Size x="16" y="24"/>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="7" y="13"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.0" right="0.25" top="0.0" bottom="1.0"/>
+						</Texture>
+						<Texture name="$parentMiddle" file="Interface\ChatFrame\ChatFrameTab">
+							<Size x="98" y="24"/>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0.25" right="0.75" top="0.0" bottom="1.0"/>
+						</Texture>
+						<Texture name="$parentRight" file="Interface\ChatFrame\ChatFrameTab">
+							<Size x="16" y="24"/>
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+							</Anchors>
+							<TexCoords left="0.75" right="1.0" top="0.0" bottom="1.0"/>
+						</Texture>
+						<FontString name="StopwatchTitle" text="Stopwatch" inherits="GameFontNormalSmall" justifyH="CENTER">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="3" y="2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="StopwatchCloseButton" inherits="UIPanelCloseButton">
+						<Size x="20" y="20"/>
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPRIGHT">
+								<Offset x="5" y="6"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								StopwatchCloseButton_OnClick();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+			<Button name="StopwatchResetButton">
+				<Size x="24" y="24"/>
+				<Anchors>
+					<Anchor point="RIGHT">
+						<Offset x="5" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						StopwatchResetButton_OnClick();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\AddOns\Stopwatch\textures\ResetButton"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+			</Button>
+			<Button name="StopwatchPlayPauseButton">
+				<Size x="24" y="24"/>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="StopwatchResetButton" relativePoint="LEFT">
+						<Offset x="5" y="0"/>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						StopwatchPlayPauseButton_OnClick();
+					</OnClick>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-SpellbookIcon-NextPage-Up"/>
+				<HighlightTexture file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD"/>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				StopwatchFrame_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				StopwatchFrame_OnEvent(event);
+			</OnEvent>
+			<OnDragStart>
+				StopwatchFrame_OnDragStart();
+			</OnDragStart>
+			<OnDragStop>
+				StopwatchFrame_OnDragStop();
+			</OnDragStop>
+		</Scripts>
+	</Frame>
+</Ui>

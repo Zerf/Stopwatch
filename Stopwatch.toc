@@ -1,0 +1,6 @@
+## Interface: 11200
+## Title: Stopwatch (TBC backport)
+## Notes: Stopwatch backport from TBC
+## Author: Zerf
+## Version 1.0
+Stopwatch.xml
